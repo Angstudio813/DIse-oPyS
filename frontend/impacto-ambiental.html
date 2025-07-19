@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impacto Ambiental - Donaciones Piura</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/impacto-ambiental.css">
+<style>
+#btnMensajes { animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 2px 12px #1976d2; } 50% { box-shadow: 0 2px 24px #1976d2; } 100% { box-shadow: 0 2px 12px #1976d2; } }
+#btnMensajes:hover { background:#1565c0; }
+</style>
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">🤝 Plataforma Solidaria</a>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="crear-donacion.html">Crear Donación</a></li>
+            <li><a href="ver-donaciones.html">Ver Donaciones</a></li>
+            <li><a href="crear-intercambio.html">Crear Intercambio</a></li>
+            <li><a href="ver-intercambios.html">Ver Intercambios</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li id="loginNav" style="display:none"><a href="login.html">Iniciar sesión</a></li>
+            <li id="registerNav" style="display:none"><a href="register.html">Registrarse</a></li>
+            <li id="userNav" style="display:none">
+              <div class="user-dropdown" id="userDropdown">
+                <button class="user-btn" id="userBtn"><span id="userName"></span> <span style="font-size:1.1em;">▼</span></button>
+                <div class="user-dropdown-content" id="userDropdownContent">
+                  <a href="#" id="logoutLink">Cerrar sesión</a>
+                </div>
+              </div>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+<section class="hero">
+        <div class="hero-content" style="display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:60vh;position:relative;z-index:2;">
+            <h1 style="font-family:'Montserrat',Arial,sans-serif;font-size:3rem;font-weight:900;color:#fff;text-shadow:0 4px 24px rgba(0,0,0,0.35);margin-bottom:1.2rem;letter-spacing:-0.02em;"> Impacto Ambiental Positivo</h1>
+            <p style="font-family:'Montserrat',Arial,sans-serif;font-size:1.35rem;color:#e0f2f1;text-shadow:0 2px 12px rgba(0,0,0,0.18);max-width:600px;text-align:center;margin-bottom:2rem;">Transformamos la manera de consumir, donando segunda vida a los objetos y construyendo un futuro más sostenible para Piura y el mundo.</p>
+        </div>
+    </section>
+
+    <!-- Problema Ambiental -->
+    <section class="problema-section section">
+        <div class="container">
+            <div class="content-grid">
+                <div class="text-content">
+                    <h2>🚨 La Crisis del Desperdicio</h2>
+                    <p>El impacto ambiental del consumo desmedido y el desperdicio representa una de las mayores amenazas para nuestro planeta. Cada año, millones de toneladas de objetos útiles terminan en vertederos, contribuyendo a:</p>
+                    <ul class="impact-list">
+                        <li>🏭 <strong>Emisiones de CO₂:</strong> La producción innecesaria de nuevos productos genera millones de toneladas de gases de efecto invernadero</li>
+                        <li>🌊 <strong>Contaminación del agua:</strong> Los vertederos filtran químicos tóxicos que contaminan ríos y acuíferos</li>
+                        <li>🗑️ <strong>Saturación de vertederos:</strong> El 65% de los residuos podrían tener una segunda vida útil</li>
+                        <li>🌳 <strong>Deforestación:</strong> La demanda de materias primas destruye ecosistemas naturales</li>
+                    </ul>
+                </div>
+                <div class="image-content">
+                    <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Contaminación ambiental">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuestra Solución -->
+    <section class="solucion-section section">
+        <div class="container">
+            <h2>💡 Nuestra Solución: Economía Circular</h2>
+            <div class="solucion-grid">
+                <div class="solucion-card">
+                    <div class="card-icon">♻️</div>
+                    <h3>Reutilización Inteligente</h3>
+                    <p>Conectamos objetos en desuso con personas que los necesitan, extendiendo su ciclo de vida útil.</p>
+                </div>
+                <div class="solucion-card">
+                    <div class="card-icon">🤝</div>
+                    <h3>Red de Donaciones</h3>
+                    <p>Facilitamos donaciones directas a entidades verificadas, garantizando que cada objeto llegue donde más se necesita.</p>
+                </div>
+                <div class="solucion-card">
+                    <div class="card-icon">📱</div>
+                    <h3>Tecnología Verde</h3>
+                    <p>Nuestra plataforma digital reduce la huella de carbono al eliminar intermediarios y transporte innecesario.</p>
+                </div>
+                <div class="solucion-card">
+                    <div class="card-icon">📊</div>
+                    <h3>Medición de Impacto</h3>
+                    <p>Tracking en tiempo real del CO₂ ahorrado, residuos evitados y recursos conservados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diferenciadores -->
+    <section class="diferenciadores-section section">
+        <div class="container">
+            <h2>🏆 Cómo Nos Diferenciamos</h2>
+            <div class="diferenciadores-grid">
+                <div class="diferenciador">
+                    <div class="diferenciador-header">
+                        <span class="diferenciador-icon">🎯</span>
+                        <h3>Enfoque Local</h3>
+                    </div>
+                    <p>Mientras otras plataformas son genéricas, nosotros nos enfocamos específicamente en Piura, trabajando con entidades locales verificadas y entendiendo las necesidades reales de nuestra comunidad.</p>
+                </div>
+                <div class="diferenciador">
+                    <div class="diferenciador-header">
+                        <span class="diferenciador-icon">✅</span>
+                        <h3>Verificación Rigurosa</h3>
+                    </div>
+                    <p>Cada entidad en nuestra plataforma está verificada y auditada. No somos solo un tablón de anuncios, somos guardianes de la transparencia y efectividad de cada donación.</p>
+                </div>
+                <div class="diferenciador">
+                    <div class="diferenciador-header">
+                        <span class="diferenciador-icon">📈</span>
+                        <h3>Impacto Medible</h3>
+                    </div>
+                    <p>Proporcionamos métricas reales y transparentes del impacto ambiental generado. Cada usuario puede ver exactamente cuánto CO₂ ha ahorrado con sus donaciones.</p>
+                </div>
+                <div class="diferenciador">
+                    <div class="diferenciador-header">
+                        <span class="diferenciador-icon">🌱</span>
+                        <h3>Educación Ambiental</h3>
+                    </div>
+                    <p>No solo facilitamos donaciones, educamos sobre sostenibilidad y ayudamos a crear hábitos de consumo consciente en nuestra comunidad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compromiso Empresarial -->
+    <section class="compromiso-section section">
+        <div class="container">
+            <h2>🌍 Nuestro Compromiso Empresarial</h2>
+            <div class="compromiso-grid">
+                <div class="compromiso-item">
+                    <h3>🔋 Operaciones Carbon-Neutral</h3>
+                    <p>Nuestros servidores funcionan con energía 100% renovable y compensamos el 120% de nuestras emisiones de carbono.</p>
+                </div>
+                <div class="compromiso-item">
+                    <h3>📄 Oficina Sin Papel</h3>
+                    <p>Hemos eliminado el 95% del uso de papel en nuestras operaciones, digitalizando todos nuestros procesos.</p>
+                </div>
+                <div class="compromiso-item">
+                    <h3>🚲 Movilidad Sostenible</h3>
+                    <p>Nuestro equipo utiliza transporte público y bicicletas, reduciendo emisiones en un 80% comparado con empresas similares.</p>
+                </div>
+                <div class="compromiso-item">
+                    <h3>🌳 Reforestación</h3>
+                    <p>Por cada 100 donaciones facilitadas, plantamos un árbol nativo en zonas deforestadas de Piura.</p>
+                </div>
+                <div class="compromiso-item">
+                    <h3>♻️ Economía Circular</h3>
+                    <p>Nuestros equipos de oficina son 100% reacondicionados o de segunda mano, predicando con el ejemplo.</p>
+                </div>
+                <div class="compromiso-item">
+                    <h3>📚 Educación Continua</h3>
+                    <p>Destinamos el 5% de nuestros ingresos a programas de educación ambiental en escuelas de Piura.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Únete al Cambio</h2>
+            <p>Cada donación, cada intercambio, cada acción cuenta. Sé parte de la solución y ayúdanos a construir un Piura más sostenible.</p>
+            <div class="cta-buttons">
+                <a href="crear-donacion.html" class="cta-button primary">🎁 Donar Ahora</a>
+                <a href="crear-intercambio.html" class="cta-button secondary">🔄 Crear Intercambio</a>
+                <a href="ver-donaciones.html" class="cta-button tertiary">👀 Explorar Donaciones</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Donaciones Piura. Construyendo un futuro sostenible, una donación a la vez.</p>
+            <p>Comprometidos con el medio ambiente y nuestra comunidad 🌱</p>
+        </div>
+    </footer>
+
+    <script>
+    // Navbar dinámico con menú de usuario y cierre de sesión
+    document.addEventListener('DOMContentLoaded', function() {
+      const user = JSON.parse(localStorage.getItem('usuarioLogueado'));
+      const loginNav = document.getElementById('loginNav');
+      const registerNav = document.getElementById('registerNav');
+      const userNav = document.getElementById('userNav');
+      const userName = document.getElementById('userName');
+      if (user) {
+        loginNav.style.display = 'none';
+        registerNav.style.display = 'none';
+        userNav.style.display = 'inline-block';
+        userName.textContent = user.nombre || user.usuario || 'Usuario';
+        // Dropdown funcional
+        const userBtn = document.getElementById('userBtn');
+        const dropdown = document.getElementById('userDropdown');
+        userBtn.onclick = function(e) {
+          e.preventDefault();
+          dropdown.classList.toggle('show');
+        };
+        document.getElementById('logoutLink').onclick = function(e) {
+          e.preventDefault();
+          localStorage.removeItem('usuarioLogueado');
+          window.location.href = 'login.html';
+        };
+        document.addEventListener('click', function(e) {
+          if (!dropdown.contains(e.target) && e.target !== userBtn) dropdown.classList.remove('show');
+        });
+      } else {
+        loginNav.style.display = 'inline-block';
+        registerNav.style.display = 'inline-block';
+        userNav.style.display = 'none';
+      }
+    });
+    // Animación de números en las estadísticas
+    function animateNumbers() {
+        const numbers = document.querySelectorAll('.stat-number');
+        numbers.forEach(number => {
+            const target = parseFloat(number.textContent.replace(',', ''));
+            const duration = 2000;
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                if (target >= 1000) {
+                    number.textContent = Math.floor(current).toLocaleString();
+                } else {
+                    number.textContent = current.toFixed(1);
+                }
+            }, 16);
+        });
+    }
+    window.addEventListener('load', animateNumbers);
+    // Smooth scroll para navegación
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+    </script>
+</body>
+</html>

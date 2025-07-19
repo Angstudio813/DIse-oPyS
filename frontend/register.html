@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse - Donaciones Piura</title>
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/login-register.css">
+    <script>
+      if (localStorage.getItem('usuarioLogueado')) {
+        window.location.replace('index.html');
+      }
+    </script>
+</head>
+<body class="register-page">
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">Donaciones Piura</a>
+        </div>
+    </nav>
+    <div class="login-register-container">
+      <div class="login-left">
+        <form id="registerForm" class="login-form">
+          <h2>Crear Cuenta</h2>
+          <p>Completa tus datos para registrarte</p>
+          <label for="nombre">Nombre completo</label>
+          <label for="email">Correo electrónico</label>
+          <input type="text" id="nombre" name="nombre" required>
+          <input type="email" id="email" name="email" required>
+          <label for="telefono">Teléfono</label>
+          <label for="dni">DNI</label>
+          <input type="tel" id="telefono" name="telefono" required>
+          <input type="text" id="dni" name="dni" required maxlength="12" pattern="[0-9]{8,12}">
+          <label for="direccion">Dirección</label>
+          <label for="fechaNacimiento">Fecha de nacimiento</label>
+          <input type="text" id="direccion" name="direccion" required>
+          <input type="date" id="fechaNacimiento" name="fechaNacimiento" required>
+          <label for="password" style="grid-column:1/3;">Contraseña</label>
+          <input type="password" id="password" name="password" required style="grid-column:1/3;">
+          <button type="submit" style="grid-column:1/3;">Registrarse</button>
+          <a href="login.html" class="register-link" style="grid-column:1/3;">¿Ya tienes cuenta? Inicia sesión</a>
+          <div id="registerError" class="login-error" style="grid-column:1/3;"></div>
+          <div id="registerSuccess" class="login-success" style="grid-column:1/3;"></div>
+        </form>
+      </div>
+      <div class="login-right"></div>
+    </div>
+    <!-- El CSS está en login-register.css -->
+    <script src="js/register.js"></script>
+</body>
+</html>

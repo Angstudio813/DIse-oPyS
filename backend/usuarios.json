@@ -1,0 +1,156 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "Ana López",
+      "email": "ana@gmail.com",
+      "password": "123456",
+      "telefono": "+51 987 123 456",
+      "rol": "superadmin"
+    },
+    {
+      "id": 2,
+      "nombre": "Carlos Mendoza",
+      "email": "carlos@gmail.com",
+      "password": "123456",
+      "telefono": "+51 999 555 444",
+      "rol": "usuario"
+    },
+    {
+      "id": 3,
+      "nombre": "Luis Mendoza",
+      "email": "luis@gmail.com",
+      "password": "123456",
+      "telefono": "+51 999 555 444",
+      "rol": "usuario"
+    },
+    {
+      "id": 4,
+      "nombre": "Fundación por los Niños del Perú - Piura",
+      "email": "contacto@fundacionninospiura.org",
+      "password": "entidad123",
+      "telefono": "+51 73 123456",
+      "rol": "entidad",
+      "entidad_info": {
+        "tipo": "ONG",
+        "descripcion": "Organización dedicada al bienestar de los niños en situación de vulnerabilidad",
+        "direccion": "Av. Grau 1234, Piura",
+        "categoria_necesidades": ["Ropa", "Juguetes", "Libros", "Útiles escolares"],
+        "verificada": true,
+        "activa": true
+      }
+    },
+    {
+      "id": 5,
+      "nombre": "Caritas Piura",
+      "email": "piura@caritas.org.pe",
+      "password": "entidad123",
+      "telefono": "+51 73 234567",
+      "rol": "entidad",
+      "entidad_info": {
+        "tipo": "ONG Religiosa",
+        "descripcion": "Organización católica que trabaja con familias en situación de pobreza",
+        "direccion": "Jr. Lima 567, Piura",
+        "categoria_necesidades": ["Alimentos", "Ropa", "Hogar", "Medicinas"],
+        "verificada": true,
+        "activa": true
+      }
+    },
+    {
+      "id": 6,
+      "nombre": "Aldeas Infantiles SOS Piura",
+      "email": "piura@aldeasinfantiles.org.pe",
+      "password": "entidad123",
+      "telefono": "+51 73 345678",
+      "rol": "entidad",
+      "entidad_info": {
+        "tipo": "ONG Internacional",
+        "descripcion": "Cuidado alternativo para niños y niñas sin cuidado parental",
+        "direccion": "Urb. Santa María del Pinar, Piura",
+        "categoria_necesidades": ["Ropa", "Juguetes", "Tecnología", "Libros", "Hogar"],
+        "verificada": true,
+        "activa": true
+      }
+    },
+    {
+      "id": 7,
+      "nombre": "Centro de Acogida San José",
+      "email": "acogida.sanjose@gmail.com",
+      "password": "entidad123",
+      "telefono": "+51 73 456789",
+      "rol": "entidad",
+      "entidad_info": {
+        "tipo": "Albergue",
+        "descripcion": "Albergue para adultos mayores en situación de abandono",
+        "direccion": "Av. Bolognesi 890, Piura",
+        "categoria_necesidades": ["Ropa", "Medicinas", "Hogar", "Alimentos"],
+        "verificada": true,
+        "activa": true
+      }
+    },
+    {
+      "id": 8,
+      "nombre": "Hogar de Niñas Santa Rosa",
+      "email": "hogarsantarosa@hotmail.com",
+      "password": "entidad123",
+      "telefono": "+51 73 567890",
+      "rol": "entidad",
+      "entidad_info": {
+        "tipo": "Albergue",
+        "descripcion": "Hogar para niñas en situación de riesgo social",
+        "direccion": "Calle Tacna 234, Piura",
+        "categoria_necesidades": ["Ropa", "Útiles escolares", "Juguetes", "Libros"],
+        "verificada": true,
+        "activa": true
+      }
+    },
+    {
+      "id": 9,
+      "nombre": "Asociación Jesús Obrero",
+      "email": "jesusobrero.piura@gmail.com",
+      "password": "entidad123",
+      "telefono": "+51 73 678901",
+      "rol": "entidad",
+      "entidad_info": {
+        "tipo": "ONG",
+        "descripcion": "Trabajo con jóvenes en situación de riesgo y capacitación laboral",
+        "direccion": "Jr. Callao 456, Piura",
+        "categoria_necesidades": ["Tecnología", "Libros", "Herramientas", "Ropa"],
+        "verificada": true,
+        "activa": true
+      }
+    },
+    {
+      "id": 10,
+      "nombre": "Cruz Roja Piura",
+      "email": "piura@cruzroja.org.pe",
+      "password": "entidad123",
+      "telefono": "+51 73 789012",
+      "rol": "entidad",
+      "entidad_info": {
+        "tipo": "ONG Internacional",
+        "descripcion": "Asistencia humanitaria y servicios de emergencia",
+        "direccion": "Av. Sánchez Cerro 789, Piura",
+        "categoria_necesidades": ["Medicinas", "Ropa", "Alimentos", "Hogar"],
+        "verificada": true,
+        "activa": true
+      }
+    },
+    {
+      "id": 11,
+      "nombre": "Fundación Forge Piura",
+      "email": "piura@forge.org",
+      "password": "entidad123",
+      "telefono": "+51 73 890123",
+      "rol": "entidad",
+      "entidad_info": {
+        "tipo": "ONG",
+        "descripcion": "Capacitación laboral para jóvenes de bajos recursos",
+        "direccion": "Urb. Club Grau, Piura",
+        "categoria_necesidades": ["Tecnología", "Libros", "Útiles de oficina"],
+        "verificada": true,
+        "activa": true
+      }
+    }
+  ]
+}

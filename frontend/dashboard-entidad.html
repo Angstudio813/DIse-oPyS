@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard de Entidad - Plataforma Solidaria</title>
+  <link rel="stylesheet" href="css/dashboard-entidad.css">
+  <link rel="stylesheet" href="css/navbar.css">
+
+<style>
+#btnMensajes { animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 2px 12px #1976d2; } 50% { box-shadow: 0 2px 24px #1976d2; } 100% { box-shadow: 0 2px 12px #1976d2; } }
+#btnMensajes:hover { background:#1565c0; }
+</style>
+
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html">🤝 Plataforma Solidaria</a>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="dashboard-entidad.html" class="active">Dashboard Entidad</a></li>
+      <li id="logoutNav"><a href="#" id="logoutLink">Cerrar sesión</a></li>
+    </ul>
+  </nav>
+
+  <main class="dashboard-main">
+    <h1>Panel de Donaciones para Entidades</h1>
+    <div id="entidadInfo"></div>
+    <div class="dashboard-table-container">
+      <table class="dashboard-table">
+        <thead>
+          <tr>
+            <th>Donante</th>
+            <th>Correo</th>
+            <th>Teléfono</th>
+            <th>Artículo</th>
+            <th>Descripción</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="donacionesEntidadBody">
+          <tr><td colspan="7" style="text-align:center;color:#888;">Cargando donaciones...</td></tr>
+        </tbody>
+      </table>
+      <!-- Modal de chat Firebase -->
+      <div id="chatModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.35);z-index:2000;align-items:center;justify-content:center;">
+        <div style="background:#fff;padding:2rem 1.5rem;border-radius:14px;max-width:400px;width:90%;box-shadow:0 2px 16px 0 rgba(40,48,60,0.15);position:relative;">
+          <h3 id="chatTitulo" style="margin-top:0">Chat</h3>
+          <div id="chatMensajes" style="height:220px;overflow-y:auto;background:#f7f7f7;border-radius:8px;padding:1em;margin-bottom:1em;"></div>
+          <input type="text" id="chatInput" placeholder="Escribe tu mensaje..." style="width:100%;margin-bottom:1em;padding:0.5em;border-radius:7px;border:1px solid #ddd;">
+          <button type="button" onclick="enviarMensajeActual()" style="background:#21b573;color:#fff;padding:0.5em 1.2em;border:none;border-radius:7px;font-weight:600;">Enviar</button>
+          <button type="button" onclick="cerrarChat()" style="margin-left:1em;background:#e74c3c;color:#fff;padding:0.5em 1.2em;border:none;border-radius:7px;font-weight:600;">Cerrar</button>
+        </div>
+      </div>
+    </div>
+    <!-- Modal para subir archivos de entrega -->
+    <div id="modalEntrega" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.35);z-index:1000;align-items:center;justify-content:center;">
+      <div style="background:#fff;padding:2rem 1.5rem;border-radius:14px;max-width:400px;width:90%;box-shadow:0 2px 16px 0 rgba(40,48,60,0.15);position:relative;">
+        <h3 style="margin-top:0">Subir comprobante de entrega</h3>
+        <form id="formEntrega">
+          <input type="file" id="archivosEntrega" name="archivosEntrega" accept="image/*,application/pdf" multiple required style="margin-bottom:1em;">
+          <div id="previewArchivos" style="margin-bottom:1em;"></div>
+          <button type="submit" style="background:#21b573;color:#fff;padding:0.5em 1.2em;border:none;border-radius:7px;font-weight:600;">Confirmar Entrega</button>
+          <button type="button" id="cancelarModal" style="margin-left:1em;background:#e74c3c;color:#fff;padding:0.5em 1.2em;border:none;border-radius:7px;font-weight:600;">Cancelar</button>
+        </form>
+      </div>
+    </div>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- Icono flotante de mensajes con notificación tipo Facebook -->
+  <a href="mis-chats.html" id="btnMensajes" style="position:fixed;bottom:32px;right:32px;z-index:9999;background:#1976d2;color:#fff;border-radius:50%;width:62px;height:62px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px #0003;font-size:2.1em;transition:box-shadow 0.2s;cursor:pointer;">
+    <span style="position:relative;">
+      <i class="fa-solid fa-message"></i>
+      <span id="notiMensajes" style="position:absolute;top:-10px;right:-14px;background:#e74c3c;color:#fff;border-radius:50%;padding:2px 7px;font-size:0.9em;font-weight:bold;display:none;">0</span>
+    </span>
+  </a>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <script src="js/dashboard-entidad.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="js/firebase-chat.js"></script>
+  <script src="js/logout.js"></script>
+  <script>
+    // Asegurar funcionalidad de cerrar sesión
+    document.addEventListener('DOMContentLoaded', function() {
+      const logoutBtn = document.getElementById('logoutLink');
+      if (logoutBtn) {
+        logoutBtn.onclick = function(e) {
+          e.preventDefault();
+          logout();
+        };
+      }
+    });
+  </script>
+</body>
+</html>

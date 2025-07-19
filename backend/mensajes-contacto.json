@@ -1,0 +1,20 @@
+{
+  "mensajes": [
+    {
+      "id": 1,
+      "fecha": "2025-07-17T15:41:55.372Z",
+      "nombre": "angel",
+      "email": "angel@gmail.com",
+      "asunto": "quiero que me reconozcan como entidad para realizar donaciones",
+      "mensaje": ".."
+    },
+    {
+      "id": 2,
+      "fecha": "2025-07-17T18:02:08.784Z",
+      "nombre": "ana",
+      "email": "ana@gmail.com",
+      "asunto": "quiero que me reconozcan como entidad para realizar donaciones",
+      "mensaje": "quiero que me reconozcan como entidad para realizar donaciones"
+    }
+  ]
+}

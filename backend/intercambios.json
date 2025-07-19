@@ -1,0 +1,35 @@
+{
+  "intercambios": [
+    {
+      "id": 1,
+      "idUsuario": 1,
+      "fecha": "2025-06-11T10:30:00Z",
+      "usuario": "Ana López",
+      "email": "ana@gmail.com",
+      "itemOfrece": "Libro de Python",
+      "descripcionOfrece": "Libro de Python para principiantes, excelente estado.",
+      "itemBusca": "Libro de JavaScript",
+      "descripcionBusca": "Busco libro de JavaScript para complementar estudios.",
+      "categoria": "Libros",
+      "ubicacion": "Piura, Perú",
+      "telefono": "+51 987 123 456",
+      "estado": "activo",
+      "imagen": "https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=387&q=80"
+    },
+    {
+      "id": 2,
+      "fecha": "2025-07-17T14:50:17.876Z",
+      "usuario": "Ana López",
+      "email": "ana@gmail.com",
+      "telefono": "+51 987 123 456",
+      "ubicacion": "Real plaza",
+      "categoria": "Tecnología",
+      "itemOfrece": "celular de alta gama usado",
+      "descripcionOfrece": "celular de alta gama usado",
+      "itemBusca": "iphone usado",
+      "descripcionBusca": "iphone usado",
+      "imagen": "https://rymportatiles.com.pe/cdn/shop/files/Celular-Samsung-Galaxy-A15-2.png?v=1736276402&width=1214",
+      "estado": "activo"
+    }
+  ]
+}

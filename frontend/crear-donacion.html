@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Donación</title>
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/crear-donacion.css">
+
+    <style>
+#btnMensajes { animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 2px 12px #1976d2; } 50% { box-shadow: 0 2px 24px #1976d2; } 100% { box-shadow: 0 2px 12px #1976d2; } }
+#btnMensajes:hover { background:#1565c0; }
+</style>
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">🤝 Plataforma Solidaria</a>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="crear-donacion.html">Crear Donación</a></li>
+            <li><a href="ver-donaciones.html">Ver Donaciones</a></li>
+            <li><a href="crear-intercambio.html">Crear Intercambio</a></li>
+            <li><a href="ver-intercambios.html">Ver Intercambios</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li id="loginNav" style="display:none"><a href="login.html">Iniciar sesión</a></li>
+            <li id="registerNav" style="display:none"><a href="register.html">Registrarse</a></li>
+            <li id="userNav" style="display:none">
+              <div class="user-dropdown" id="userDropdown">
+                <button class="user-btn" id="userBtn"><span id="userName"></span> <span style="font-size:1.1em;">▼</span></button>
+                <div class="user-dropdown-content" id="userDropdownContent">
+                  <a href="#" id="logoutLink">Cerrar sesión</a>
+                </div>
+              </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>Donar a Entidades de Piura</h1>
+            <p>Conecta tu donación con organizaciones verificadas que realmente la necesitan</p>
+            <div class="info-box">
+                <span class="icon">ℹ️</span>
+                <span>Todas las entidades mostradas están verificadas y ubicadas en Piura</span>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <div class="success-message message" id="successMessage">
+                <span id="successText">¡Donación publicada exitosamente!</span>
+            </div>
+            
+            <div class="error-message message" id="errorMessage">
+                <span id="errorText">Error al publicar la donación</span>
+            </div>
+
+            <form id="donacionForm">
+                <div class="form-grid">
+                    <!-- Selección de entidad beneficiaria -->
+                    <div class="form-group full-width">
+                        <label for="entidadBeneficiaria">🏢 Entidad Beneficiaria</label>
+                        <select id="entidadBeneficiaria" name="entidadBeneficiaria" required>
+                            <option value="">Selecciona una entidad de Piura...</option>
+                        </select>
+                        <div class="entidad-info" id="entidadInfo" style="display: none;">
+                            <div class="entidad-detalles">
+                                <h4 id="entidadNombre"></h4>
+                                <p id="entidadDescripcion"></p>
+                                <div class="entidad-contacto">
+                                    <span id="entidadDireccion"></span><br>
+                                    <span id="entidadTelefono"></span><br>
+                                    <span id="entidadEmail"></span>
+                                </div>
+                                <div class="necesidades">
+                                    <strong>Necesidades prioritarias:</strong>
+                                    <span id="entidadNecesidades"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usuario">👤 Tu nombre completo</label>
+                        <input type="text" id="usuario" name="usuario" required readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">📧 Correo electrónico</label>
+                        <input type="email" id="email" name="email" required readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefono">📱 Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono" required readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ubicacion">📍 Ubicación</label>
+                        <input type="text" id="ubicacion" name="ubicacion" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="categoria">🏷️ Categoría de donación</label>
+                        <select id="categoria" name="categoria" required>
+                            <option value="">Selecciona una categoría</option>
+                            <option value="Ropa">Ropa y Calzado</option>
+                            <option value="Alimentos">Alimentos No Perecibles</option>
+                            <option value="Tecnología">Tecnología y Equipos</option>
+                            <option value="Libros">Libros y Material Educativo</option>
+                            <option value="Útiles escolares">Útiles Escolares</option>
+                            <option value="Juguetes">Juguetes</option>
+                            <option value="Hogar">Artículos para el Hogar</option>
+                            <option value="Medicinas">Medicinas y Productos de Salud</option>
+                            <option value="Herramientas">Herramientas y Equipos de Trabajo</option>
+                            <option value="Útiles de oficina">Útiles de Oficina</option>
+                            <option value="Otros">Otros</option>
+                        </select>
+                        <div class="categoria-help" id="categoriaHelp"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="estado">🔍 Estado del producto</label>
+                        <select id="estado" name="estado" required>
+                            <option value="">Selecciona el estado</option>
+                            <option value="Nuevo">Nuevo</option>
+                            <option value="Usado - Como nuevo">Usado - Como nuevo</option>
+                            <option value="Usado - Buen estado">Usado - Buen estado</option>
+                            <option value="Usado - Aceptable">Usado - Aceptable</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="itemDona">🎁 ¿Qué donas?</label>
+                        <input type="text" id="itemDona" name="itemDona" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="descripcion">📝 Descripción detallada</label>
+                        <textarea id="descripcion" name="descripcion" required></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="imagen">📷 Imagen del producto</label>
+                        <div class="imagen-opciones">
+                            <div class="opcion">
+                                <input type="radio" id="imagenUrl" name="tipoImagen" value="url" checked>
+                                <label for="imagenUrl">URL de imagen</label>
+                            </div>
+                            <div class="opcion">
+                                <input type="radio" id="imagenArchivo" name="tipoImagen" value="archivo">
+                                <label for="imagenArchivo">Subir archivo</label>
+                            </div>
+                        </div>
+                        <div id="urlImagenContainer">
+                            <input type="url" id="imagenUrl" name="imagen" placeholder="https://ejemplo.com/imagen.jpg">
+                            <div class="imagen-preview" id="previewUrl"></div>
+                        </div>
+                        <div id="archivoImagenContainer" style="display:none;">
+                            <input type="file" id="imagenArchivo" name="imagenArchivo" accept="image/*">
+                            <div class="imagen-preview" id="previewArchivo"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">🤝 Registrar Donación a Entidad</button>
+            </form>
+
+            <div class="nav-buttons">
+                <a href="ver-donaciones.html" class="nav-btn">👀 Ver Donaciones</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth-guard.js"></script>
+    <script src="js/logout.js"></script>
+    <script src="js/crear-donacion.js"></script>
+    <script>
+    // Redirigir a dashboard si el usuario es entidad
+    document.addEventListener('DOMContentLoaded', function() {
+      const user = JSON.parse(localStorage.getItem('usuarioLogueado'));
+      if (user && user.rol === 'entidad') {
+        window.location.href = 'dashboard-entidad.html';
+      }
+    });
+    </script>
+    <script>
+    // Navbar dinámico con menú de usuario
+    document.addEventListener('DOMContentLoaded', function() {
+      const user = JSON.parse(localStorage.getItem('usuarioLogueado'));
+      const loginNav = document.getElementById('loginNav');
+      const registerNav = document.getElementById('registerNav');
+      const userNav = document.getElementById('userNav');
+      if (user) {
+        loginNav.style.display = 'none';
+        registerNav.style.display = 'none';
+        userNav.style.display = 'inline-block';
+        document.getElementById('userName').textContent = user.nombre;
+        // Dropdown
+        const userBtn = document.getElementById('userBtn');
+        const dropdown = document.getElementById('userDropdown');
+        userBtn.onclick = function(e) {
+          e.preventDefault();
+          dropdown.classList.toggle('show');
+        };
+        document.getElementById('logoutLink').onclick = function(e) {
+          e.preventDefault();
+          logout();
+        };
+        document.addEventListener('click', function(e) {
+          if (!dropdown.contains(e.target)) dropdown.classList.remove('show');
+        });
+      } else {
+        loginNav.style.display = 'inline-block';
+        registerNav.style.display = 'inline-block';
+        userNav.style.display = 'none';
+      }
+    });
+    // Autocompletar datos del usuario logueado
+    document.addEventListener('DOMContentLoaded', function() {
+        const user = JSON.parse(localStorage.getItem('usuarioLogueado'));
+        if (user) {
+            if(document.getElementById('usuario')) document.getElementById('usuario').value = user.nombre;
+            if(document.getElementById('email')) document.getElementById('email').value = user.email;
+            if(document.getElementById('telefono')) document.getElementById('telefono').value = user.telefono;
+        }
+    });
+    </script>
+
+    <!-- Icono flotante de mensajes con notificación tipo Facebook -->
+    <a href="mis-chats.html" id="btnMensajes" style="position:fixed;bottom:32px;right:32px;z-index:9999;background:#1976d2;color:#fff;border-radius:50%;width:62px;height:62px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px #0003;font-size:2.1em;transition:box-shadow 0.2s;cursor:pointer;">
+      <span style="position:relative;">
+        <i class="fa-solid fa-message"></i>
+        <span id="notiMensajes" style="position:absolute;top:-10px;right:-14px;background:#e74c3c;color:#fff;border-radius:50%;padding:2px 7px;font-size:0.9em;font-weight:bold;display:none;">0</span>
+      </span>
+    </a>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</body>
+</html>

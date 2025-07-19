@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Donaciones</title>
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/ver-donaciones.css">
+    <script>
+    // Guard de autenticación: redirige antes de construir el HTML si no está logueado
+    (function(){
+      var user = localStorage.getItem('usuarioLogueado');
+      if (!user) {
+        window.location.href = 'login.html';
+      }
+    })();
+    </script>
+
+<style>
+#btnMensajes { animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 2px 12px #1976d2; } 50% { box-shadow: 0 2px 24px #1976d2; } 100% { box-shadow: 0 2px 12px #1976d2; } }
+#btnMensajes:hover { background:#1565c0; }
+</style>
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">🤝 Plataforma Solidaria</a>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="crear-donacion.html">Crear Donación</a></li>
+            <li><a href="ver-donaciones.html">Ver Donaciones</a></li>
+            <li><a href="crear-intercambio.html">Crear Intercambio</a></li>
+            <li><a href="ver-intercambios.html">Ver Intercambios</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li id="loginNav" style="display:none"><a href="login.html">Iniciar sesión</a></li>
+            <li id="registerNav" style="display:none"><a href="register.html">Registrarse</a></li>
+            <li id="userNav" style="display:none">
+              <div class="user-dropdown" id="userDropdown">
+                <button class="user-btn" id="userBtn"><span id="userName"></span> <span style="font-size:1.1em;">▼</span></button>
+                <div class="user-dropdown-content" id="userDropdownContent">
+                  <a href="#" id="logoutLink">Cerrar sesión</a>
+                </div>
+              </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>Donaciones a Entidades de Piura</h1>
+            <p>Donaciones dirigidas a organizaciones verificadas de nuestra ciudad</p>
+            <div class="info-destacada">
+                <span class="icono">✅</span>
+                <span>Todas las entidades mostradas están verificadas y son de confianza</span>
+            </div>
+        </div>
+
+        <div class="filters-container">
+            <div class="stats">
+                <div class="stat-item">
+                    <span>Total: </span>
+                    <span id="totalDonaciones">0</span>
+                </div>
+                <div class="stat-item">
+                    <span>Entidades beneficiadas: </span>
+                    <span id="entidadesBeneficiadas">0</span>
+                </div>
+            </div>
+
+            <div class="filters">
+                <select id="filtroCategoria">
+                    <option value="">Todas las categorías</option>
+                    <option value="Ropa">Ropa y Calzado</option>
+                    <option value="Alimentos">Alimentos No Perecibles</option>
+                    <option value="Tecnología">Tecnología y Equipos</option>
+                    <option value="Libros">Libros y Material Educativo</option>
+                    <option value="Útiles escolares">Útiles Escolares</option>
+                    <option value="Juguetes">Juguetes</option>
+                    <option value="Hogar">Artículos para el Hogar</option>
+                    <option value="Medicinas">Medicinas y Productos de Salud</option>
+                    <option value="Herramientas">Herramientas y Equipos de Trabajo</option>
+                    <option value="Útiles de oficina">Útiles de Oficina</option>
+                    <option value="Otros">Otros</option>
+                </select>
+
+                <select id="filtroEntidad">
+                    <option value="">Todas las entidades</option>
+                </select>
+
+                <input type="text" id="filtroBusqueda" placeholder="Buscar donaciones...">
+            </div>
+        </div>
+
+
+        <div id="donacionesContainer" class="donaciones-grid"></div>
+
+        <div class="nav-buttons">
+            <a href="crear-donacion.html" class="nav-btn">🎁 Donar a Entidad</a>
+        </div>
+    </div>
+
+    <script src="js/logout.js"></script>
+    <script src="js/ver-donaciones.js"></script>
+   <script>
+   // Redirigir a dashboard si el usuario es entidad
+   document.addEventListener('DOMContentLoaded', function() {
+     const user = JSON.parse(localStorage.getItem('usuarioLogueado'));
+     if (user && user.rol === 'entidad') {
+       window.location.href = 'dashboard-entidad.html';
+     }
+   });
+   </script>
+    <script>
+    // Navbar dinámico con menú de usuario
+    document.addEventListener('DOMContentLoaded', function() {
+      const user = JSON.parse(localStorage.getItem('usuarioLogueado'));
+      const loginNav = document.getElementById('loginNav');
+      const registerNav = document.getElementById('registerNav');
+      const userNav = document.getElementById('userNav');
+      if (user) {
+        loginNav.style.display = 'none';
+        registerNav.style.display = 'none';
+        userNav.style.display = 'inline-block';
+        document.getElementById('userName').textContent = user.nombre;
+        // Dropdown
+        const userBtn = document.getElementById('userBtn');
+        const dropdown = document.getElementById('userDropdown');
+        userBtn.onclick = function(e) {
+          e.preventDefault();
+          dropdown.classList.toggle('show');
+        };
+        document.getElementById('logoutLink').onclick = function(e) {
+          e.preventDefault();
+          logout();
+        };
+        document.addEventListener('click', function(e) {
+          if (!dropdown.contains(e.target)) dropdown.classList.remove('show');
+        });
+      } else {
+        loginNav.style.display = 'inline-block';
+        registerNav.style.display = 'inline-block';
+        userNav.style.display = 'none';
+      }
+    });
+    </script>
+
+    <!-- Icono flotante de mensajes con notificación tipo Facebook -->
+    <a href="mis-chats.html" id="btnMensajes" style="position:fixed;bottom:32px;right:32px;z-index:9999;background:#1976d2;color:#fff;border-radius:50%;width:62px;height:62px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px #0003;font-size:2.1em;transition:box-shadow 0.2s;cursor:pointer;">
+      <span style="position:relative;">
+        <i class="fa-solid fa-message"></i>
+        <span id="notiMensajes" style="position:absolute;top:-10px;right:-14px;background:#e74c3c;color:#fff;border-radius:50%;padding:2px 7px;font-size:0.9em;font-weight:bold;display:none;">0</span>
+      </span>
+    </a>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</body>
+</html>

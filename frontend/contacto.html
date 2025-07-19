@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - Plataforma Solidaria</title>
+  <link rel="stylesheet" href="css/contacto.css">
+  <link rel="stylesheet" href="css/navbar.css">
+
+<style>
+#btnMensajes { animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 2px 12px #1976d2; } 50% { box-shadow: 0 2px 24px #1976d2; } 100% { box-shadow: 0 2px 12px #1976d2; } }
+#btnMensajes:hover { background:#1565c0; }
+</style>
+
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html">🤝 Plataforma Solidaria</a>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="crear-donacion.html">Crear Donación</a></li>
+      <li><a href="ver-donaciones.html">Ver Donaciones</a></li>
+      <li><a href="crear-intercambio.html">Crear Intercambio</a></li>
+      <li><a href="ver-intercambios.html">Ver Intercambios</a></li>
+      <li><a href="contacto.html" class="active">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <main class="contacto-main">
+    <section class="contacto-card">
+      <h1>Contáctanos</h1>
+      <p class="contacto-desc">¿Tienes dudas, sugerencias o quieres colaborar? Completa el formulario y te responderemos lo antes posible.</p>
+      <form id="contactoForm" class="contacto-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" required autocomplete="email">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="asunto">Asunto</label>
+            <input type="text" id="asunto" name="asunto" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group full-width">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn-enviar">Enviar mensaje</button>
+        <div class="form-feedback" id="formFeedback"></div>
+      </form>
+      <div class="contacto-info">
+        <div><i class="fa-solid fa-envelope"></i> contacto@plataformasolidaria.pe</div>
+        <div><i class="fa-solid fa-phone"></i> +51 999 888 777</div>
+        <div><i class="fa-solid fa-location-dot"></i> Calle Lima 500, Piura Centro</div>
+      </div>
+    </section>
+    <section class="contacto-map">
+      <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-80.634%2C-5.200%2C-80.620%2C-5.185&amp;layer=mapnik&amp;marker=-5.194%2C-80.629" style="border:0; width:100%; height:100%; min-height:320px; border-radius:18px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+  </main>
+
+  <!-- Icono flotante de mensajes con notificación tipo Facebook -->
+  <a href="mis-chats.html" id="btnMensajes" style="position:fixed;bottom:32px;right:32px;z-index:9999;background:#1976d2;color:#fff;border-radius:50%;width:62px;height:62px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px #0003;font-size:2.1em;transition:box-shadow 0.2s;cursor:pointer;">
+    <span style="position:relative;">
+      <i class="fa-solid fa-message"></i>
+      <span id="notiMensajes" style="position:absolute;top:-10px;right:-14px;background:#e74c3c;color:#fff;border-radius:50%;padding:2px 7px;font-size:0.9em;font-weight:bold;display:none;">0</span>
+    </span>
+  </a>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="js/contacto.js"></script>
+
+
+</body>
+</html>

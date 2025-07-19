@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Fondo general */
+body {
+    background: linear-gradient(135deg, #f0fdf4 0%, #bbf7d0 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 2rem 1rem;
+}
+
+/* Título superior centrado bonito */
+.header-title {
+    background-color: #10b981;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 0.8rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+/* Contenedor principal */
+.login-register-container {
+    display: flex;
+    width: 100%;
+    max-width: 1100px; /* Aumentamos ancho */
+    margin: auto;
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Parte izquierda del formulario */
+.login-left {
+    flex: 1;
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Imagen derecha */
+.login-right {
+    flex: 1;
+    background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100%;
+}
+
+/* Formulario */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+}
+
+.login-form h2 {
+    font-size: 2rem;
+    color: #059669;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.login-form p {
+    margin-bottom: 1rem;
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+.login-form label {
+    font-weight: 500;
+    color: #475569;
+    margin-bottom: 0.3rem;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    padding: 0.75rem 1rem;
+    border: 1px solid #d1fae5;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #f9fafb;
+    transition: all 0.2s ease-in-out;
+    font-family: 'Poppins', sans-serif;
+}
+
+.login-form input:focus {
+    outline: none;
+    border: 1.5px solid #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.login-form .remember {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #334155;
+}
+
+/* Botón */
+.login-form button {
+    background-color: #10b981;
+    color: white;
+    padding: 0.9rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+.login-form button:hover {
+    background-color: #059669;
+}
+
+/* Enlaces */
+.register-link {
+    color: #059669;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.register-link:hover {
+    color: #047857;
+    text-decoration: underline;
+}
+
+.login-error {
+    background-color: #fee2e2;
+    color: #dc2626;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 0.5rem;
+    display: none;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .login-register-container {
+        flex-direction: column;
+        margin: 1rem;
+    }
+
+    .login-right {
+        min-height: 300px;
+    }
+
+    .header-title {
+        font-size: 1.2rem;
+        padding: 0.6rem 1.5rem;
+    }
+}

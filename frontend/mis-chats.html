@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Chats</title>
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/chat.css">
+</head>
+<body>
+  <nav>
+    <!-- Aquí va tu navbar -->
+  </nav>
+  <!-- Botón flotante profesional con texto e icono -->
+  <style>
+    #btnRetroceder {
+      position: fixed;
+      top: 28px;
+      left: 28px;
+      z-index: 9999;
+      background: linear-gradient(135deg, #1976d2 60%, #42a5f5 100%);
+      color: #fff;
+      border-radius: 32px;
+      min-width: 120px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      box-shadow: 0 4px 18px #1976d280;
+      font-size: 1.25em;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      padding: 0 24px;
+      transition: box-shadow 0.2s, background 0.2s, transform 0.2s;
+      user-select: none;
+    }
+    #btnRetroceder:hover {
+      background: linear-gradient(135deg, #1565c0 60%, #42a5f5 100%);
+      box-shadow: 0 8px 32px #1976d2a0;
+      transform: scale(1.07);
+    }
+    #btnRetroceder .icono {
+      font-size: 1.6em;
+      margin-right: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s;
+    }
+    #btnRetroceder:hover .icono {
+      transform: rotate(-180deg) scale(1.15);
+    }
+  </style>
+  <button id="btnRetroceder" aria-label="Regresar" onclick="window.history.back()">
+    <span class="icono"><i class="fa-solid fa-rotate-left"></i></span>
+    Regresar
+  </button>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <div class="chats-container" style="display: flex;">
+    <div class="chat-list">
+      <h3>Conversaciones</h3>
+      <ul id="chatList"></ul>
+    </div>
+    <div class="chat-main">
+      <div class="chat-header" id="chatHeader">Selecciona un chat</div>
+      <div class="chat-messages" id="chatMessages"></div>
+      <div class="chat-input-area">
+        <input type="text" id="chatInput" placeholder="Escribe un mensaje..." disabled>
+        <button id="sendBtn" disabled>Enviar</button>
+      </div>
+    </div>
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="js/mis-chats.js"></script>
+</body>
+</html>

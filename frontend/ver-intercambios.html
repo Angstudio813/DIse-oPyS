@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Intercambios</title>
+    <link rel="stylesheet" href="css/ver-intercambios.css">
+    <link rel="stylesheet" href="css/navbar.css">
+
+</head>
+
+<style>
+#btnMensajes { animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 2px 12px #1976d2; } 50% { box-shadow: 0 2px 24px #1976d2; } 100% { box-shadow: 0 2px 12px #1976d2; } }
+#btnMensajes:hover { background:#1565c0; }
+</style>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">🤝 Plataforma Solidaria</a>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="crear-donacion.html">Crear Donación</a></li>
+            <li><a href="ver-donaciones.html">Ver Donaciones</a></li>
+            <li><a href="crear-intercambio.html">Crear Intercambio</a></li>
+            <li><a href="ver-intercambios.html">Ver Intercambios</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li id="loginNav" style="display:none"><a href="login.html">Iniciar sesión</a></li>
+            <li id="registerNav" style="display:none"><a href="register.html">Registrarse</a></li>
+            <li id="userNav" style="display:none">
+              <div class="user-dropdown" id="userDropdown">
+                <button class="user-btn" id="userBtn"><span id="userName"></span> <span style="font-size:1.1em;">▼</span></button>
+                <div class="user-dropdown-content" id="userDropdownContent">
+                  <a href="#" id="logoutLink">Cerrar sesión</a>
+                </div>
+              </div>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1> Ver Intercambios</h1>
+            <p>Explora los intercambios disponibles</p>
+        </div>
+
+        <div class="filters-container">
+            <div class="stats">
+                <div class="stat-item">
+                    <span>Total: </span>
+                    <span id="totalIntercambios">0</span>
+                </div>
+                <div class="stat-item">
+                    <span>Categorías: </span>
+                    <span id="categoriasActivas">0</span>
+                </div>
+            </div>
+
+            <div class="filters">
+                <select id="filtroCategoria">
+                    <option value="">Todas las categorías</option>
+                    <option value="Tecnología">Tecnología</option>
+                    <option value="Deportes">Deportes</option>
+                    <option value="Hogar">Hogar</option>
+                    <option value="Libros">Libros</option>
+                    <option value="Ropa">Ropa</option>
+                    <option value="Música">Música</option>
+                    <option value="Otros">Otros</option>
+                </select>
+
+                <input type="text" id="filtroBusqueda" placeholder="Buscar intercambios...">
+            </div>
+        </div>
+
+        <div id="intercambiosContainer" class="intercambios-grid"></div>
+        
+        <div id="noIntercambios" class="no-results">
+            <p>No se encontraron intercambios 😢</p>
+        </div>
+    <!-- Modal de chat mejorado SIEMPRE visible en el body -->
+    <div id="chatModal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.35);z-index:2000;align-items:center;justify-content:center;">
+      <div style="background:#fff;padding:2rem 1.5rem;border-radius:14px;max-width:420px;width:95%;box-shadow:0 2px 16px 0 rgba(40,48,60,0.15);position:relative;display:flex;flex-direction:column;">
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <h3 id="chatTitulo" style="margin-top:0">Chat</h3>
+          <button type="button" onclick="cerrarChat()" style="background:#e74c3c;color:#fff;padding:0.3em 0.8em;border:none;border-radius:7px;font-weight:600;">✖</button>
+        </div>
+        <div id="chatMensajes" style="height:220px;overflow-y:auto;background:#f7f7f7;border-radius:8px;padding:1em;margin-bottom:1em;"></div>
+        <div style="display:flex;gap:8px;">
+          <input type="text" id="chatInput" placeholder="Escribe tu mensaje..." style="flex:1;margin-bottom:0;padding:0.5em;border-radius:7px;border:1px solid #ddd;">
+          <button type="button" onclick="enviarMensajeActual()" style="background:#21b573;color:#fff;padding:0.5em 1.2em;border:none;border-radius:7px;font-weight:600;">Enviar</button>
+        </div>
+      </div>
+    </div>
+    <!-- Firebase CDN clásico para proyectos HTML/JS sin framework -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <script src="js/firebase-chat.js"></script>
+
+        <div class="nav-buttons">
+            <a href="crear-intercambio.html" class="nav-btn">🎁 Crear Intercambio</a>
+        </div>
+    </div>
+
+    <script src="js/ver-intercambios.js"></script>
+    <script src="js/logout.js"></script>
+    <script>
+    // Redirigir a dashboard si el usuario es entidad
+    document.addEventListener('DOMContentLoaded', function() {
+      const user = JSON.parse(localStorage.getItem('usuarioLogueado'));
+      if (user && user.rol === 'entidad') {
+        window.location.href = 'dashboard-entidad.html';
+      }
+    });
+    // Navbar dinámico con menú de usuario y logout
+    document.addEventListener('DOMContentLoaded', function() {
+      const user = JSON.parse(localStorage.getItem('usuarioLogueado'));
+      const loginNav = document.getElementById('loginNav');
+      const registerNav = document.getElementById('registerNav');
+      const userNav = document.getElementById('userNav');
+      if (user) {
+        loginNav.style.display = 'none';
+        registerNav.style.display = 'none';
+        userNav.style.display = 'inline-block';
+        document.getElementById('userName').textContent = user.nombre;
+        // Dropdown
+        const userBtn = document.getElementById('userBtn');
+        const dropdown = document.getElementById('userDropdown');
+        userBtn.onclick = function(e) {
+          e.preventDefault();
+          dropdown.classList.toggle('show');
+        };
+        document.getElementById('logoutLink').onclick = function(e) {
+          e.preventDefault();
+          if (typeof logout === 'function') {
+            logout();
+          } else {
+            // Fallback mínimo
+            localStorage.removeItem('usuarioLogueado');
+            window.location.href = 'login.html';
+          }
+        };
+        document.addEventListener('click', function(e) {
+          if (!dropdown.contains(e.target)) dropdown.classList.remove('show');
+        });
+      } else {
+        loginNav.style.display = 'inline-block';
+        registerNav.style.display = 'inline-block';
+        userNav.style.display = 'none';
+      }
+    });
+    </script>
+  <!-- Icono flotante de mensajes con notificación tipo Facebook -->
+  <a href="mis-chats.html" id="btnMensajes" style="position:fixed;bottom:32px;right:32px;z-index:9999;background:#1976d2;color:#fff;border-radius:50%;width:62px;height:62px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px #0003;font-size:2.1em;transition:box-shadow 0.2s;cursor:pointer;">
+    <span style="position:relative;">
+      <i class="fa-solid fa-message"></i>
+      <span id="notiMensajes" style="position:absolute;top:-10px;right:-14px;background:#e74c3c;color:#fff;border-radius:50%;padding:2px 7px;font-size:0.9em;font-weight:bold;display:none;">0</span>
+    </span>
+  </a>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</body>
+</html>

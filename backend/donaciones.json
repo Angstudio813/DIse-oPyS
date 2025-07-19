@@ -1,0 +1,219 @@
+{
+  "donaciones": [
+    {
+      "id": 1,
+      "idUsuario": 1,
+      "fecha": "2025-01-14T00:43:06.144Z",
+      "usuario": "Ana López",
+      "email": "ana@gmail.com",
+      "telefono": "+51 987 123 456",
+      "ubicacion": "Urb. Los Jardines, Piura",
+      "categoria": "Tecnología",
+      "estado": "Usado - Buen estado",
+      "itemDona": "Laptop HP Pavilion",
+      "descripcion": "Laptop HP Pavilion en buen estado, ideal para estudiantes. 8GB RAM, 256GB SSD. Funciona perfectamente.",
+      "imagen": "https://images.unsplash.com/photo-1588702547923-7093a6c3ba33?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
+      "entidadBeneficiaria": {
+        "id": 6,
+        "nombre": "Aldeas Infantiles SOS Piura",
+        "tipo": "ONG Internacional",
+        "direccion": "Urb. Santa María del Pinar, Piura",
+        "telefono": "+51 73 345678",
+        "email": "piura@aldeasinfantiles.org.pe"
+      },
+      "tipoDonacion": "entidad_verificada",
+      "ubicacionEntrega": "Urb. Santa María del Pinar, Piura",
+      "estadoPublicacion": "activo",
+      "estadoDonacion": "entregada",
+      "historialEstados": [
+        {
+          "estado": "pendiente",
+          "fecha": "2025-01-14T00:43:06.144Z"
+        },
+        {
+          "estado": "entregada",
+          "fecha": "2025-07-17T17:32:27.360Z"
+        }
+      ],
+      "entidadReceptora": null,
+      "contactoRealizado": false,
+      "fechaEntrega": "2025-07-17T17:32:27.360Z",
+      "comentariosEntidad": ""
+    },
+    {
+      "id": 2,
+      "idUsuario": 1,
+      "fecha": "2025-07-17T18:07:08.036Z",
+      "usuario": "Ana López",
+      "email": "ana@gmail.com",
+      "telefono": "+51 987 123 456",
+      "ubicacion": "Real plaza",
+      "categoria": "Tecnología",
+      "estado": "Usado - Como nuevo",
+      "itemDona": "Laptop",
+      "descripcion": "Sepan  usarla",
+      "imagen": "",
+      "entidadBeneficiaria": {
+        "id": 4,
+        "nombre": "Fundación por los Niños del Perú - Piura",
+        "tipo": "ONG",
+        "direccion": "Av. Grau 1234, Piura",
+        "telefono": "+51 73 123456",
+        "email": "contacto@fundacionninospiura.org"
+      },
+      "tipoDonacion": "entidad_verificada",
+      "ubicacionEntrega": "Av. Grau 1234, Piura",
+      "estadoPublicacion": "activo"
+    },
+    {
+      "id": 3,
+      "idUsuario": 3,
+      "fecha": "2025-07-17T18:21:30.465Z",
+      "usuario": "Luis Mendoza",
+      "email": "luis@gmail.com",
+      "telefono": "+51 999 555 444",
+      "ubicacion": "Real plaza",
+      "categoria": "Ropa",
+      "estado": "Usado - Como nuevo",
+      "itemDona": "ropa",
+      "descripcion": "ropa ",
+      "imagen": "",
+      "entidadBeneficiaria": {
+        "id": 5,
+        "nombre": "Caritas Piura",
+        "tipo": "ONG Religiosa",
+        "direccion": "Jr. Lima 567, Piura",
+        "telefono": "+51 73 234567",
+        "email": "piura@caritas.org.pe"
+      },
+      "tipoDonacion": "entidad_verificada",
+      "ubicacionEntrega": "Jr. Lima 567, Piura",
+      "estadoPublicacion": "activo"
+    },
+    {
+      "id": 4,
+      "idUsuario": 1,
+      "fecha": "2025-07-17T18:25:40.280Z",
+      "usuario": "Ana López",
+      "email": "ana@gmail.com",
+      "telefono": "+51 987 123 456",
+      "ubicacion": "Real plaza",
+      "categoria": "Libros",
+      "estado": "Usado - Como nuevo",
+      "itemDona": "Libros  ",
+      "descripcion": "Libros de lectura infantil y poetas conocidos",
+      "imagen": "",
+      "entidadBeneficiaria": {
+        "id": 4,
+        "nombre": "Caritas Piura",
+        "tipo": "ONG Religiosa",
+        "direccion": "Jr. Lima 567, Piura",
+        "telefono": "+51 73 234567",
+        "email": "piura@caritas.org.pe"
+      },
+      "tipoDonacion": "entidad_verificada",
+      "ubicacionEntrega": "Jr. Lima 567, Piura",
+      "estadoPublicacion": "activo"
+    },
+    {
+      "id": 5,
+      "idUsuario": 3,
+      "fecha": "2025-07-18T05:34:59.106Z",
+      "usuario": "Luis Mendoza",
+      "email": "luis@gmail.com",
+      "telefono": "+51 999 555 444",
+      "ubicacion": "real plaza",
+      "categoria": "Ropa",
+      "estado": "Nuevo",
+      "itemDona": "zapatos",
+      "descripcion": "zapatos nuevos talla 42",
+      "imagen": "https://passarelape.vtexassets.com/arquivos/ids/1276112/Zapatos-Dauss-Hombres-2701--Marron---38_0.jpg?v=637862585562600000",
+      "entidadBeneficiaria": {
+        "id": 4,
+        "nombre": "Fundación por los Niños del Perú - Piura",
+        "tipo": "ONG",
+        "direccion": "Av. Grau 1234, Piura",
+        "telefono": "+51 73 123456",
+        "email": "contacto@fundacionninospiura.org"
+      },
+      "tipoDonacion": "entidad_verificada",
+      "ubicacionEntrega": "Av. Grau 1234, Piura",
+      "estadoPublicacion": "activo"
+    },
+    {
+      "id": 6,
+      "idUsuario": 3,
+      "fecha": "2025-07-18T06:13:49.849Z",
+      "usuario": "Luis Mendoza",
+      "email": "luis@gmail.com",
+      "telefono": "+51 999 555 444",
+      "ubicacion": "Real plaza",
+      "categoria": "Ropa",
+      "estado": "Nuevo",
+      "itemDona": "zapatos",
+      "descripcion": "zapatos",
+      "imagen": "",
+      "entidadBeneficiaria": {
+        "id": 4,
+        "nombre": "Fundación por los Niños del Perú - Piura",
+        "tipo": "ONG",
+        "direccion": "Av. Grau 1234, Piura",
+        "telefono": "+51 73 123456",
+        "email": "contacto@fundacionninospiura.org"
+      },
+      "tipoDonacion": "entidad_verificada",
+      "ubicacionEntrega": "Av. Grau 1234, Piura",
+      "estadoPublicacion": "activo"
+    },
+    {
+      "id": 7,
+      "idUsuario": 1,
+      "fecha": "2025-07-18T06:19:59.572Z",
+      "usuario": "Ana López",
+      "email": "ana@gmail.com",
+      "telefono": "+51 987 123 456",
+      "ubicacion": "Real plaza",
+      "categoria": "Ropa",
+      "estado": "Nuevo",
+      "itemDona": "zapatos",
+      "descripcion": "zapatos",
+      "imagen": "",
+      "entidadBeneficiaria": {
+        "id": 1,
+        "nombre": "Fundación por los Niños del Perú - Piura",
+        "tipo": "ONG",
+        "direccion": "Av. Grau 1234, Piura",
+        "telefono": "+51 73 123456",
+        "email": "contacto@fundacionninospiura.org"
+      },
+      "tipoDonacion": "entidad_verificada",
+      "ubicacionEntrega": "Av. Grau 1234, Piura",
+      "estadoPublicacion": "activo"
+    },
+    {
+      "id": 8,
+      "idUsuario": 2,
+      "fecha": "2025-07-18T16:23:31.017Z",
+      "usuario": "Carlos Mendoza",
+      "email": "carlos@gmail.com",
+      "telefono": "+51 999 555 444",
+      "ubicacion": "Real plaza",
+      "categoria": "Ropa",
+      "estado": "Nuevo",
+      "itemDona": "zapatos",
+      "descripcion": "das",
+      "imagen": "",
+      "entidadBeneficiaria": {
+        "id": 4,
+        "nombre": "Fundación por los Niños del Perú - Piura",
+        "tipo": "ONG",
+        "direccion": "Av. Grau 1234, Piura",
+        "telefono": "+51 73 123456",
+        "email": "contacto@fundacionninospiura.org"
+      },
+      "tipoDonacion": "entidad_verificada",
+      "ubicacionEntrega": "Av. Grau 1234, Piura",
+      "estadoPublicacion": "activo"
+    }
+  ]
+}

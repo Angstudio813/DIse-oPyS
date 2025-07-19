@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donaciones e Intercambios - Plataforma Solidaria</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="css/navbar.css">
+
+<style>
+#btnMensajes { animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { box-shadow: 0 2px 12px #1976d2; } 50% { box-shadow: 0 2px 24px #1976d2; } 100% { box-shadow: 0 2px 12px #1976d2; } }
+#btnMensajes:hover { background:#1565c0; }
+</style>
+
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">🤝 Plataforma Solidaria</a>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <!-- Navbar dinámico, se modifica por JS según el rol -->
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <h1>🌟 Bienvenido a la Plataforma Solidaria</h1>
+        <p>Conectamos personas que quieren donar con quienes necesitan, y facilitamos intercambios justos en nuestra comunidad. Juntos construimos un mundo más solidario.</p>
+        
+        </div>
+
+    <div class="cta-buttons" id="ctaButtons">
+        <a href="crear-donacion.html" class="cta-button" id="donarBtn">Hacer una Donación</a>
+        <a href="crear-intercambio.html" class="cta-button secondary" id="intercambioBtn">Proponer Intercambio</a>
+        <a href="login.html" class="cta-button" id="loginBtn" style="display:none">Iniciar sesión</a>
+        <a href="register.html" class="cta-button secondary" id="registerBtn" style="display:none">Registrarse</a>
+    </div>
+    </div>
+
+    <div class="features">
+        <div class="feature-card">
+            <span class="feature-icon">🎁</span>
+            <h3>Donaciones</h3>
+            <p>Comparte lo que ya no necesitas con personas que pueden darle un nuevo uso. Cada donación cuenta y hace la diferencia en nuestra comunidad.</p>
+            <div class="action-buttons">
+                <a href="crear-donacion.html" class="action-btn donate">Crear Donación</a>
+                <a href="ver-donaciones.html" class="action-btn view">Ver Donaciones</a>
+            </div>
+        </div>
+        <div class="feature-card">
+            <span class="feature-icon">🔄</span>
+            <h3>Intercambios</h3>
+            <p>Intercambia objetos que ya no usas por otros que necesitas. Una forma inteligente y sostenible de obtener lo que buscas.</p>
+            <div class="action-buttons">
+                <a href="crear-intercambio.html" class="action-btn exchange">Crear Intercambio</a>
+                <a href="ver-intercambios.html" class="action-btn view">Ver Intercambios</a>
+            </div>
+        </div>
+        <div class="feature-card">
+            <span class="feature-icon">🌱</span>
+            <h3>Impacto Ambiental</h3>
+            <p>Contribuye al cuidado del medio ambiente dando segunda vida a los objetos y reduciendo el desperdicio en nuestra comunidad.</p>
+            <div class="action-buttons">
+                <a href="impacto-ambiental.html" class="action-btn">Explorar Opciones</a>
+            </div>
+        </div>
+        <div class="feature-card">
+            <span class="feature-icon">🤝</span>
+            <h3>Comunidad</h3>
+            <p>Únete a una red de personas solidarias que creen en compartir y ayudarse mutuamente. Juntos construimos una comunidad más fuerte.</p>
+            <div class="action-buttons">
+                <a href="contacto.html" class="action-btn">Contactar</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="https://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://wa.me/51999999999" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+      <div class="footer-map">
+        <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-80.634%2C-5.200%2C-80.620%2C-5.185&amp;layer=mapnik&amp;marker=-5.194%2C-80.629" style="border:0; width:100%; height:220px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div style="font-size:0.9em; color:#888; margin-top:0.3em;">Calle Lima 500, Piura Centro</div>
+      </div>
+      <div style="margin-top:1.2rem;">
+        &copy; 2025 Plataforma Solidaria. Conectando corazones, compartiendo recursos.<br>
+        Hecho con ❤️ para nuestra comunidad
+      </div>
+    </footer>
+
+
+    <script src="js/index.js"></script>
+
+
+</body>
+</html>

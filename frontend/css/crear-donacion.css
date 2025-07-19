@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+    background: #f8fafc;
+    min-height: 100vh;
+    margin: 0;
+    color: #1e293b;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+
+.header {
+    background: #f6f8fa;
+    color: #1e293b;
+    padding: 2.5rem 2rem 2rem 2rem;
+    text-align: center;
+    border-bottom: 1.5px solid #e2e8f0;
+}
+
+.header h1 {
+    font-size: clamp(2.1rem, 4vw, 2.7rem);
+    margin-bottom: 8px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #059669;
+    text-shadow: none;
+}
+
+.header p {
+    font-size: 1.08rem;
+    opacity: 0.85;
+    font-weight: 400;
+    color: #64748b;
+}
+
+/* Ayuda para categorías */
+.categoria-help {
+    margin-top: 8px;
+    padding: 10px;
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: #856404;
+    display: none;
+}
+
+.categoria-help.show {
+    display: block;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.form-container {
+    padding: 2.2rem 2rem 2rem 2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px 0 rgba(30,41,59,0.07);
+    border: 1px solid #e2e8f0;
+}
+
+.message {
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    display: none;
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.success-message {
+    background: linear-gradient(135deg, #00b894, #00cec9);
+    color: white;
+}
+
+.error-message {
+    background: linear-gradient(135deg, #ff7675, #d63031);
+    color: white;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem 2rem;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+label {
+    font-weight: 600;
+    color: #2d3436;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+input,
+select,
+textarea {
+    padding: 10px;
+    border: 2px solid #e1e8ed;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #00b894;
+    box-shadow: 0 0 0 3px rgba(0, 184, 148, 0.1);
+    transform: translateY(-1px);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.btn {
+    background: #059669;
+    color: #fff;
+    border: none;
+    padding: 14px 0;
+    border-radius: 10px;
+    font-size: 1.08rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+    display: block;
+    box-shadow: 0 2px 8px rgba(5,150,105,0.08);
+    letter-spacing: 0.01em;
+}
+
+.btn:hover:not(:disabled) {
+    background: #047857;
+    box-shadow: 0 6px 18px rgba(5,150,105,0.13);
+    transform: translateY(-1px) scale(1.01);
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.nav-buttons {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+.nav-btn {
+    background: #e2e8f0;
+    color: #059669;
+    text-decoration: none;
+    padding: 10px 22px;
+    border-radius: 8px;
+    display: inline-block;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    font-weight: 600;
+    font-size: 0.97rem;
+    box-shadow: 0 2px 8px rgba(30,41,59,0.07);
+}
+
+.nav-btn:hover {
+    background: #059669;
+    color: #fff;
+    box-shadow: 0 6px 18px rgba(5,150,105,0.13);
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 1rem;
+    }
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    .form-container {
+        padding: 1.1rem;
+    }
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .btn {
+        padding: 10px 0;
+        font-size: 0.95rem;
+    }
+    input,
+    select,
+    textarea {
+        padding: 8px;
+        font-size: 0.87rem;
+    }
+}
