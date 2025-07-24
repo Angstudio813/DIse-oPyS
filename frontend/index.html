@@ -95,6 +95,46 @@
 
 
     <script src="js/index.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const user = JSON.parse(localStorage.getItem('usuarioLogueado'));
+      const navLinks = document.getElementById('navLinks');
+      if (user && user.rol === 'entidad' && navLinks) {
+        navLinks.innerHTML = `
+          <li><a href="dashboard-entidad.html" class="active">Dashboard Entidad</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li id="userNav" style="display:inline-block">
+            <div class="user-dropdown" id="userDropdown">
+              <button class="user-btn" id="userBtn"><span id="userName">${user.nombre}</span> <span style="font-size:1.1em;">▼</span></button>
+              <div class="user-dropdown-content" id="userDropdownContent">
+                <a href="#" id="logoutLink">Cerrar sesión</a>
+              </div>
+            </div>
+          </li>
+        `;
+        // Dropdown funcionalidad
+        const userBtn = document.getElementById('userBtn');
+        const dropdown = document.getElementById('userDropdown');
+        if (userBtn && dropdown) {
+          userBtn.onclick = function(e) {
+            e.preventDefault();
+            dropdown.classList.toggle('show');
+          };
+        }
+        const logoutLink = document.getElementById('logoutLink');
+        if (logoutLink) {
+          logoutLink.onclick = function(e) {
+            e.preventDefault();
+            localStorage.removeItem('usuarioLogueado');
+            window.location.href = 'login.html';
+          };
+        }
+        document.addEventListener('click', function(e) {
+          if (dropdown && !dropdown.contains(e.target) && e.target !== userBtn) dropdown.classList.remove('show');
+        });
+      }
+    });
+    </script>
 
 
 </body>

@@ -26,17 +26,17 @@ async function cargarDonaciones() {
   const tbody = document.getElementById('donacionesEntidadBody');
   tbody.innerHTML = '<tr><td colspan="7">Cargando donaciones...</td></tr>';
   try {
-    const res = await fetch(`${API_URL}/donaciones`);
+    // Solicitar solo las donaciones donde la entidad logueada es beneficiaria
+    const res = await fetch(`${API_URL}/donaciones?entidadEmail=${encodeURIComponent(entidad.email)}&entidadId=${encodeURIComponent(entidad.id)}`);
     const donaciones = await res.json();
-    // Mostrar donaciones donde la entidad logueada es la beneficiaria
-    const disponibles = donaciones.filter(d =>
+    // Filtrar por entidad logueada (por email o id)
+    const disponibles = Array.isArray(donaciones) ? donaciones.filter(d =>
       d.estadoPublicacion === 'activo' &&
       (
-        (d.entidadBeneficiaria && String(d.entidadBeneficiaria.id) === String(entidad.id)) ||
-        (d.entidadReceptora && String(d.entidadReceptora.id) === String(entidad.id))
+        (d.entidadBeneficiaria && (d.entidadBeneficiaria.email === entidad.email || String(d.entidadBeneficiaria.id) === String(entidad.id))) ||
+        (d.entidadReceptora && (d.entidadReceptora.email === entidad.email || String(d.entidadReceptora.id) === String(entidad.id)))
       )
-    );
-    // Mostrar también las donaciones que no tienen estadoDonacion definido (pendientes por defecto)
+    ) : [];
     disponibles.forEach(d => {
       if (!d.estadoDonacion) d.estadoDonacion = 'pendiente';
     });

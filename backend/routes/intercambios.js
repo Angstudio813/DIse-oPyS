@@ -1,15 +1,10 @@
 
 const express = require('express');
-const admin = require('firebase-admin');
+// Usar instancia global de Firebase Admin inicializada en server.js
 const router = express.Router();
 
-// Inicializa Firebase Admin solo si no está inicializado
-if (!admin.apps.length) {
-  admin.initializeApp({
-    credential: admin.credential.cert(require('../firebase-credentials.json')),
-  });
-}
-const db = admin.firestore();
+// Firebase Admin ya está inicializado en server.js
+const db = require('firebase-admin').firestore();
 
 
 // Obtener todos los intercambios
@@ -32,7 +27,6 @@ router.post('/intercambios', async (req, res) => {
       ...req.body,
       estado: 'activo'
     };
-    // Si el cliente envía un id, lo usamos, si no Firestore lo genera
     let ref;
     if (req.body.id) {
       ref = db.collection('intercambios').doc(String(req.body.id));

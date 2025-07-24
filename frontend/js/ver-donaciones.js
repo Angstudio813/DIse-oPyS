@@ -116,7 +116,8 @@ class VistaDonaciones {
             EntidadesAPI.obtenerTodas()
         ]);
         this.entidades = entidades;
-        this.donaciones = donaciones;
+        // Solo mostrar donaciones del usuario logueado
+        this.donaciones = Array.isArray(donaciones) ? donaciones.filter(d => d.email === userEmail) : [];
         // Si el campo estadoPublicacion no existe, mostrar igual
         this.donacionesFiltradas = this.donaciones.filter(d => !d.estadoPublicacion || d.estadoPublicacion === 'activo');
         this.actualizarEstadisticas();
