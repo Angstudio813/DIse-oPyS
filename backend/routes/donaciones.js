@@ -2,6 +2,12 @@ const express = require('express');
 const admin = require('firebase-admin');
 const router = express.Router();
 
+// Inicializar Firebase Admin solo una vez
+if (!admin.apps.length) {
+  admin.initializeApp({
+    credential: admin.credential.cert(require('../firebase-credentials.json')),
+  });
+}
 const db = admin.firestore();
 
 // Acciones de entidad sobre donación
