@@ -29,4 +29,7 @@ router.post('/login', async (req, res) => {
     console.error('❌ Error en login:', error);
     return res.status(500).json({ success: false, message: 'Error de servidor', details: error.message });
   }
+
 });
+
+module.exports = router;
