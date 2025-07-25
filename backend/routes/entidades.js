@@ -1,13 +1,16 @@
 
 const express = require('express');
-const admin = require('firebase-admin');
+const path = require('path');
+const { leerJSON } = require('../utils/fileHelper');
+
 const router = express.Router();
 
 // Obtener todas las entidades (usuarios con rol 'entidad')
 router.get('/entidades', async (req, res) => {
     try {
-        const snapshot = await admin.firestore().collection('usuarios').where('rol', '==', 'entidad').get();
-        const entidades = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        const usuariosPath = path.join(__dirname, '../usuarios.json');
+        const data = await leerJSON(usuariosPath);
+        const entidades = (data.usuarios || []).filter(u => u.rol === 'entidad');
         res.json(entidades);
     } catch (error) {
         console.error('Error obteniendo entidades:', error);
