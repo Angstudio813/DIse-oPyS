@@ -49,20 +49,38 @@ router.post('/donaciones/:id/accion', async (req, res) => {
   }
 });
 
+
 // Obtener todas las donaciones
 router.get('/donaciones', async (req, res) => {
-  // Obtener email del usuario logueado (por query, header, o body)
+  // Si se consulta por email de usuario (donante)
   const email = req.query.email || req.headers['x-user-email'] || req.body?.email;
-  if (!email) {
-    return res.status(401).json({ success: false, message: 'No autenticado' });
-  }
+  // Si se consulta por entidad beneficiaria
+  const entidadEmail = req.query.entidadEmail;
+  const entidadId = req.query.entidadId;
   try {
-    // Solo devolver donaciones del usuario logueado
-    const snapshot = await db.collection('donaciones').where('email', '==', email).get();
-    const donaciones = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-    res.json(donaciones);
+    const snapshot = await admin.firestore().collection('donaciones').get();
+    let donaciones = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    // Filtrar por usuario donante
+    if (email) {
+      donaciones = donaciones.filter(d => d.email === email);
+      return res.json(donaciones);
+    }
+    // Filtrar por entidad beneficiaria
+    if (entidadEmail || entidadId) {
+      donaciones = donaciones.filter(d => {
+        const beneficiaria = d.entidadBeneficiaria || {};
+        const receptora = d.entidadReceptora || {};
+        return (
+          (beneficiaria && ((entidadEmail && beneficiaria.email === entidadEmail) || (entidadId && String(beneficiaria.id) === String(entidadId)))) ||
+          (receptora && ((entidadEmail && receptora.email === entidadEmail) || (entidadId && String(receptora.id) === String(entidadId))))
+        );
+      });
+      return res.json(donaciones);
+    }
+    // Si no hay filtros, devolver vacío por seguridad
+    return res.json([]);
   } catch (error) {
-    res.status(500).json({ success: false, message: 'Error al leer donaciones' });
+    res.status(500).json({ error: 'Error leyendo donaciones desde Firestore', details: error.message });
   }
 });
 

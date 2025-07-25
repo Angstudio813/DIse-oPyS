@@ -19,14 +19,14 @@ router.post('/login', async (req, res) => {
   try {
     const snapshot = await db.collection('usuarios').where('email', '==', email).where('password', '==', password).get();
     if (snapshot.empty) {
-      return res.status(401).json({ success: false, message: 'Credenciales incorrectas' });
+      console.log('❌ Login fallido: usuario o contraseña incorrectos', { email, password });
+      return res.status(401).json({ success: false, message: 'Credenciales incorrectas', email, password });
     }
     const usuario = snapshot.docs[0].data();
     const { password: _, ...usuarioSinPassword } = usuario;
     return res.json({ success: true, usuario: usuarioSinPassword });
   } catch (error) {
-    return res.status(500).json({ success: false, message: 'Error de servidor' });
+    console.error('❌ Error en login:', error);
+    return res.status(500).json({ success: false, message: 'Error de servidor', details: error.message });
   }
 });
-
-module.exports = router;

@@ -1,15 +1,12 @@
 
 const express = require('express');
-const admin = require('firebase-admin');
+
 const router = express.Router();
 
-// Inicializa Firebase Admin solo si no está inicializado
-if (!admin.apps.length) {
-  admin.initializeApp({
-    credential: admin.credential.cert(require('../firebase-credentials.json')),
-  });
-}
-const db = admin.firestore();
+
+const db = require('firebase-admin').firestore();
+
+
 
 
 // Obtener todos los intercambios
