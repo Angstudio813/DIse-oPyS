@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mensajes de Contacto (Admin)</title>
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/contacto.css">
+  <style>
+    .admin-msg-container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 16px #0002; padding: 2rem; }
+    .msg-card { border-bottom: 1px solid #eee; padding: 1rem 0; }
+    .msg-card:last-child { border-bottom: none; }
+    .msg-header { font-weight: bold; color: #1976d2; }
+    .msg-body { margin: 0.5em 0; }
+    .msg-meta { font-size: 0.95em; color: #888; }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html">🤝 Plataforma Solidaria</a>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+      <li id="userNav" style="display:none">
+        <div class="user-dropdown" id="userDropdown">
+          <button class="user-btn" id="userBtn"><span id="userName"></span> <span style="font-size:1.1em;">▼</span></button>
+          <div class="user-dropdown-content" id="userDropdownContent">
+            <a href="#" id="logoutLink">Cerrar sesión</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="admin-msg-container">
+    <h2>Mensajes de Contacto (Solo Admin)</h2>
+    <div id="msgList">Cargando mensajes...</div>
+  </div>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const user = JSON.parse(localStorage.getItem('usuarioLogueado'));
+    const userNav = document.getElementById('userNav');
+    const userName = document.getElementById('userName');
+    const isAdmin = user && typeof user.rol === 'string' && user.rol.trim().toLowerCase() === 'admin';
+    // Si es admin y no está en mensajes-admin.html, redirigir
+    if (isAdmin && !window.location.pathname.endsWith('mensajes-admin.html')) {
+      window.location.href = 'mensajes-admin.html';
+      return;
+    }
+    if (!isAdmin) {
+      alert('Acceso restringido. Solo administradores pueden ver esta página.');
+      window.location.href = 'index.html';
+      return;
+    }
+    if (userNav && userName) {
+      userNav.style.display = 'inline-block';
+      userName.textContent = user.nombre || user.email;
+      const userBtn = document.getElementById('userBtn');
+      const dropdown = document.getElementById('userDropdown');
+      if (userBtn && dropdown) {
+        userBtn.onclick = function(e) {
+          e.preventDefault();
+          dropdown.classList.toggle('show');
+        };
+      }
+      const logoutLink = document.getElementById('logoutLink');
+      if (logoutLink) {
+        logoutLink.onclick = function(e) {
+          e.preventDefault();
+          localStorage.removeItem('usuarioLogueado');
+          window.location.href = 'login.html';
+        };
+      }
+      document.addEventListener('click', function(e) {
+        if (dropdown && !dropdown.contains(e.target) && e.target !== userBtn) dropdown.classList.remove('show');
+      });
+    }
+    // Obtener mensajes de Firestore
+    fetch('/api/mensajes_contacto?admin=1')
+      .then(res => res.json())
+      .then(mensajes => {
+        const msgList = document.getElementById('msgList');
+        if (!Array.isArray(mensajes) || mensajes.length === 0) {
+          msgList.textContent = 'No hay mensajes.';
+          return;
+        }
+        msgList.innerHTML = mensajes.map(msg => `
+          <div class="msg-card">
+            <div class="msg-header">${msg.nombre || msg.email || 'Sin nombre'} (${msg.email})</div>
+            <div class="msg-body"><b>Asunto:</b> ${msg.asunto || 'Sin asunto'}<br>${msg.mensaje}</div>
+            <div class="msg-meta">Fecha: ${msg.fecha || 'Sin fecha'} | Teléfono: ${msg.telefono || 'Sin teléfono'}</div>
+          </div>
+        `).join('');
+      })
+      .catch(() => {
+        document.getElementById('msgList').textContent = 'Error al cargar mensajes.';
+      });
+  });
+  </script>
+</body>
+</html>
